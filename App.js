@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useContext } from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
+import ThemeContext, { ThemeProvider } from './src/contexts/ThemeContext';
+import HomeScreen from './src/screen/HomeScreen';
+
 
 export default function App() {
+  let theme = useContext(ThemeContext);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider>
+      <PaperProvider theme={theme}>
+        <HomeScreen />
+      </PaperProvider>
+    </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
